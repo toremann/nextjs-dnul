@@ -29,14 +29,14 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Hi, I'm <a href="https://github.com/toremann">Dnul.</a>
+          Hi, I`m <a href="https://github.com/toremann">Dnul.</a>
         </h1>
 
         <p className={styles.description}>
           Last commit:
           <code className={styles.code}>
             {data[0].repo.name.replace(new RegExp(`^toremann/`), "")} <br />
-            {new Date(data[0].created_at).toLocaleString("en-GB")} <br />
+            {new Date(data[0].created_at).toLocaleDateString("en-GB")} <br />
           </code>
         </p>
         <div>
@@ -44,7 +44,7 @@ export default function Home({ data }) {
             {data
 
               .filter((data) => {
-                return data.type === "PushEvent";
+                return data.type === "CreateEvent";
               })
 
               .slice(0, 6)
@@ -52,13 +52,10 @@ export default function Home({ data }) {
                 return (
                   <div key={index} className={styles.card}>
                     <a href={`https://github.com/${data.repo.name}`}>
-                      {" "}
                       {data.repo.name.replace(new RegExp(`^toremann/`), "")}
-                    </a>{" "}
+                    </a> /{data.payload.ref}
                     <br />
-                    {new Date(data.created_at).toLocaleString("en-GB")}
-                    <br />
-                    {data.payload.ref.replace(new RegExp(`^refs/heads/`), "")}
+                    {new Date(data.created_at).toLocaleDateString("en-GB")}
                   </div>
                 );
               })}
@@ -76,7 +73,7 @@ export default function Home({ data }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
