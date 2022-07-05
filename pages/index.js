@@ -18,7 +18,9 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-  console.log(data);
+  const gitURL = "https://github.com/";
+  const username = "toremann"
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,14 +31,14 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Hi, I`m <a href="https://github.com/toremann">Dnul.</a>
+          Hi, I`m <a href={`https://github.com/${username}`}>Dnul.</a>
         </h1>
 
         <p className={styles.description}>
           Last commit:
           <code className={styles.code}>
-            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")} <br />
-            {new Date(data[0].created_at).toLocaleDateString("en-GB")} <br />
+            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}{" "}
+            {new Date(data[0].created_at).toLocaleString("en-GB")}
           </code>
         </p>
         <div>
@@ -44,16 +46,31 @@ export default function Home({ data }) {
             {data
 
               .filter((data) => {
-                return data.type === "CreateEvent";
+                return data.type === "PushEvent";
               })
 
-              .slice(0, 6)
+              .slice(0, 8)
               .map((data, index) => {
                 return (
                   <div key={index} className={styles.card}>
-                    <a href={`https://github.com/${data.repo.name}`}>
-                      {data.repo.name.replace(new RegExp(`^toremann/`), "")}
-                    </a> /{data.payload.ref}
+                    <a href={`${gitURL}${data.repo.name}`}>
+                      {" "}
+                      <b>
+                        {data.repo.name.replace(new RegExp(`^toremann\/`), "")}
+                      </b>{" "}
+                    </a>
+                    <i>
+                      {data.payload.ref.replace(
+                        new RegExp(`^refs\/heads\/`),
+                        ""
+                      )}
+                      _
+                      <a
+                        href={`${gitURL}${data.repo.name}/commit/${data.payload.head}`}
+                      >
+                        {data.payload.head.slice(0, 7)}
+                      </a>
+                    </i>
                     <br />
                     {new Date(data.created_at).toLocaleDateString("en-GB")}
                   </div>

@@ -2,9 +2,7 @@
   padding: 0 2rem;
   background: #D3959B;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #BFE6BA, #D3959B);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-
+  background: linear-gradient(330deg, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .main {
@@ -76,10 +74,6 @@
   max-width: 800px;
 }
 
-.grid a{
-  font-weight: bold;
-}
-
 .card {
   margin: 1rem;
   padding: 1.5rem;
@@ -92,10 +86,13 @@
   max-width: 300px;
 }
 
+.card a:hover{
+  color: aquamarine;
+}
+
 .card:hover,
 .card:focus,
 .card:active {
-  color: #3a3a3a;
   border-color: #000000;
 }
 
