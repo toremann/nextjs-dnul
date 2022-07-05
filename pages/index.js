@@ -19,7 +19,7 @@ export async function getServerSideProps() {
 
 export default function Home({ data }) {
   const gitURL = "https://github.com/";
-  const username = "toremann"
+  const username = "toremann";
 
   return (
     <div className={styles.container}>
@@ -37,7 +37,7 @@ export default function Home({ data }) {
         <p className={styles.description}>
           Last commit:
           <code className={styles.code}>
-            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}{" "}
+            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}
             {new Date(data[0].created_at).toLocaleString("en-GB")}
           </code>
         </p>
@@ -54,10 +54,10 @@ export default function Home({ data }) {
                 return (
                   <div key={index} className={styles.card}>
                     <a href={`${gitURL}${data.repo.name}`}>
-                      {" "}
                       <b>
                         {data.repo.name.replace(new RegExp(`^toremann\/`), "")}
-                      </b>{" "}
+                        {` `}
+                      </b>
                     </a>
                     <i>
                       {data.payload.ref.replace(
