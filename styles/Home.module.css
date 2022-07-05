@@ -1,5 +1,10 @@
 .container {
   padding: 0 2rem;
+  background: #D3959B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #BFE6BA, #D3959B);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
 }
 
 .main {
@@ -16,7 +21,6 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
 }
@@ -29,7 +33,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -51,13 +55,12 @@
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 1rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
 
 .code {
-  background: #fafafa;
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -71,6 +74,10 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
+}
+
+.grid a{
+  font-weight: bold;
 }
 
 .card {
@@ -88,8 +95,8 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: #3a3a3a;
+  border-color: #000000;
 }
 
 .card h2 {
