@@ -70,9 +70,9 @@ export default function Home({ data }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          Last commit:
           <code className={styles.code}>
-            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}
+            Last commit:{" "}
+            {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}{" "}
             {new Date(data[0].created_at).toLocaleString("en-GB")}
           </code>
         </motion.p>
