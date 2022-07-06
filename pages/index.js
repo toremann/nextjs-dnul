@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useInView } from "react-intersection-observer";
 import styles from "../styles/Home.module.css";
+import { motion } from "framer-motion";
 
 export async function getServerSideProps() {
   const username = "toremann";
@@ -20,6 +24,13 @@ export async function getServerSideProps() {
 export default function Home({ data }) {
   const gitURL = "https://github.com/";
   const username = "toremann";
+  const [name, setName] = useState("Dnul.");
+
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    console.log("inView", inView);
+  }, [inView]);
 
   return (
     <div className={styles.container}>
@@ -30,19 +41,48 @@ export default function Home({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Hi, I`m <a href={`https://github.com/${username}`}>Dnul.</a>
-        </h1>
-
-        <p className={styles.description}>
+        <div className={styles.logo}>
+          <motion.h1
+            className={styles.title__left}
+            initial={{ x: "-100vw" }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", duration: 1, bounce: 0.3 }}
+          >
+            Hi, I`m{" "}
+          </motion.h1>
+          <motion.h1
+            className={styles.title__right}
+            initial={{ y: "-200vw" }}
+            animate={{ y: 0 }}
+            transition={{
+              type: "spring",
+              duration: 1,
+              bounce: 0.3,
+              delay: 0.6,
+            }}
+          >
+            <a href={`https://github.com/${username}`}>{name}</a>
+          </motion.h1>
+        </div>
+        <motion.p
+          className={styles.description}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           Last commit:
           <code className={styles.code}>
             {data[0].repo.name.replace(new RegExp(`^toremann/`), "")}
             {new Date(data[0].created_at).toLocaleString("en-GB")}
           </code>
-        </p>
+        </motion.p>
         <div>
-          <div className={styles.grid}>
+          <motion.div
+            className={styles.grid}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             {data
 
               .filter((data) => {
@@ -76,11 +116,45 @@ export default function Home({ data }) {
                   </div>
                 );
               })}
-          </div>
+          </motion.div>
           <div className={styles.grid}>
-            <h1 className={styles.title}>
-              JS, node, express, NextJS, React, GraphQL, RPi, CSS, Electronics.
-            </h1>
+            <motion.h1
+              ref={ref}
+              className={styles.title}
+              initial={{ x: "100vw" }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", duration: 1, bounce: 0.3 }}
+            >
+              JS, node, express,
+            </motion.h1>
+            <motion.h1
+              ref={ref}
+              className={styles.title}
+              initial={{ x: "-100vw" }}
+              animate={{ x: 0 }}
+              transition={{
+                type: "spring",
+                duration: 1,
+                bounce: 0.3,
+                delay: 0.5,
+              }}
+            >
+              NextJS, React, GraphQL,
+            </motion.h1>
+            <motion.h1
+              ref={ref}
+              className={styles.title}
+              initial={{ y: "100vw" }}
+              animate={{ y: 0 }}
+              transition={{
+                type: "spring",
+                duration: 1,
+                bounce: 0.3,
+                delay: 1,
+              }}
+            >
+              RPi, CSS, Electronics.
+            </motion.h1>
           </div>
         </div>
       </main>

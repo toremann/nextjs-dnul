@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^6.4.2",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.3.5"
   },
   "devDependencies": {
-    "next": "12.2.0",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0"
+    "eslint-config-next": "12.2.0",
+    "next": "12.2.0"
   }
 }

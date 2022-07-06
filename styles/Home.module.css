@@ -15,6 +15,14 @@
   align-items: center;
 }
 
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: row;
+}
+
+
 .footer {
   display: flex;
   flex: 1;
@@ -45,6 +53,30 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+}
+
+.title__left {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  padding: 0 1rem 0 0;
+}
+
+.title__right {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title__right a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.title__right a:hover,
+.title__right a:focus,
+.title__right a:active {
+  text-decoration: underline;
 }
 
 .title,
@@ -105,11 +137,6 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
 }
 
 @media (max-width: 600px) {
