@@ -23,6 +23,8 @@
 }
 
 
+
+
 .footer {
   display: flex;
   flex: 1;
@@ -59,7 +61,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
-  padding: 0 1rem 0 0;
+  padding: 0 0.7rem 0 0;
 }
 
 .title__right {
@@ -143,5 +145,16 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container {
+    width: fit-content;
+    height: fit-content;
   }
 }
