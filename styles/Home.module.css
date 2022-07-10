@@ -2,7 +2,7 @@
   padding: 0 2rem;
   background: #D3959B;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #BFE6BA, #D3959B);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(330deg, #BFE6BA, #D3959B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(330deg, #BFE6BA, #D3959B); /* W3C, IE 10+ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari/ 7+ */
 }
 
 .main {
@@ -21,9 +21,6 @@
   align-items: flex-end;
   flex-direction: row;
 }
-
-
-
 
 .footer {
   display: flex;
@@ -116,7 +113,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  width: 350px;
 }
 
 .card a:hover{
