@@ -2,10 +2,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
-import Logo from './components/Logo';
-import Github from './components/Github';
-import Linkedin from './components/Linkedin';
-import Footer from './components/Footer';
+import Logo from '/components/Logo';
+import Github from '/components/Github';
+import Linkedin from '/components/Linkedin';
+import Footer from '/components/Footer';
 
 export async function getServerSideProps() {
     const username = 'toremann';

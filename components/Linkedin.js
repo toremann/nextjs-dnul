@@ -1,8 +1,9 @@
 import React from 'react';
-import certificates from './certificates/certificates.json';
+
 import { motion } from 'framer-motion';
-import styles from '../../styles/Home.module.css';
+import styles from '/styles/Home.module.css';
 import { AiOutlineLinkedin } from 'react-icons/ai';
+import certificates from './certificates.json';
 
 const Linkedin = () => {
     return (
