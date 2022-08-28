@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import styles from "../styles/Home.module.css";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+import Logo from "./components/Logo";
+import Github from "./components/Github";
 
 export async function getServerSideProps() {
   const username = "toremann";
@@ -41,29 +43,7 @@ export default function Home({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.logo}>
-          <motion.h1
-            className={styles.title__left}
-            initial={{ x: "-100vw" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", duration: 1, bounce: 0.3 }}
-          >
-            Hi, I`m{" "}
-          </motion.h1>
-          <motion.h1
-            className={styles.title__right}
-            initial={{ y: "-200vw" }}
-            animate={{ y: 0 }}
-            transition={{
-              type: "spring",
-              duration: 1,
-              bounce: 0.3,
-              delay: 0.6,
-            }}
-          >
-            <a href={`https://github.com/${username}`}>{name}</a>
-          </motion.h1>
-        </div>
+        <Logo data={data}/>
         <motion.p
           className={styles.description}
           initial={{ opacity: 0 }}
@@ -77,46 +57,7 @@ export default function Home({ data }) {
           </code>
         </motion.p>
         <div>
-          <motion.div
-            className={styles.grid}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            {data
-
-              .filter((data) => {
-                return data.type === "PushEvent";
-              })
-
-              .slice(0, 8)
-              .map((data, index) => {
-                return (
-                  <div key={index} className={styles.card}>
-                    <a href={`${gitURL}${data.repo.name}`}>
-                      <b>
-                        {data.repo.name.replace(new RegExp(`^toremann\/`), "")}
-                        {` `}
-                      </b>
-                    </a>
-                    <i>
-                      {data.payload.ref.replace(
-                        new RegExp(`^refs\/heads\/`),
-                        ""
-                      )}
-                      _
-                      <a
-                        href={`${gitURL}${data.repo.name}/commit/${data.payload.head}`}
-                      >
-                        {data.payload.head.slice(0, 7)}
-                      </a>
-                    </i>
-                    <br />
-                    {new Date(data.created_at).toLocaleDateString("en-GB")}
-                  </div>
-                );
-              })}
-          </motion.div>
+          <Github data={data} />
           <div className={styles.grid}>
             <motion.h1
               ref={ref}
