@@ -5,7 +5,6 @@ import { AiFillGithub } from 'react-icons/ai';
 
 const Github = ({ data }) => {
     const gitURL = 'https://github.com/';
-    console.log(data.length);
 
     return (
         <>
