@@ -21,7 +21,8 @@ const Linkedin = () => {
                                     <b>{data.name}</b>
                                 </a>
                                 <br />
-                                {data.completed}
+                                By:<i>{data.by}</i>
+                                <br />
                             </div>
 
                             <div className={styles.card__type}>

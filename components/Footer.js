@@ -1,39 +1,25 @@
 import React from 'react';
 import styles from '/styles/Home.module.css';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Footer = () => {
+    // get prop
+    const dbOnline = true;
     return (
         <>
-            <motion.h1 className={styles.title} initial={{ x: '100vw' }} animate={{ x: 0 }} transition={{ type: 'spring', duration: 1, bounce: 0.3 }}>
-                JS, node, express,
-            </motion.h1>
-            <motion.h1
-                className={styles.title}
-                initial={{ x: '-100vw' }}
-                animate={{ x: 0 }}
-                transition={{
-                    type: 'spring',
-                    duration: 1,
-                    bounce: 0.3,
-                    delay: 0.5,
-                }}
-            >
-                NextJS, React, GraphQL,
-            </motion.h1>
-            <motion.h1
-                className={styles.title}
-                initial={{ y: '100vw' }}
-                animate={{ y: 0 }}
-                transition={{
-                    type: 'spring',
-                    duration: 1,
-                    bounce: 0.3,
-                    delay: 1,
-                }}
-            >
-                RPi, CSS, Electronics.
-            </motion.h1>
+            <footer className={styles.footer}>
+                <div>
+                    <div>
+                        <a href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app" target="_blank" rel="noopener noreferrer">
+                            Powered by
+                            <span className={styles.logo}>
+                                <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+                            </span>
+                        </a>
+                    </div>
+                    <div>{!dbOnline ? 'db offline' : 'db online'}</div>
+                </div>
+            </footer>
         </>
     );
 };
