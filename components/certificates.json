@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "Node.js Essential Training (2019)",
+        "by": "Alex Banks",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/821744cc843d8af6c42c0b49016b41077fbcaf9de1d244a0e521753903cdeb93"
+    },
+    {
+        "id": 2,
+        "name": "Learning npm the Node Package Manager",
+        "by": "Emmanuel Henri",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/c1f9b80d341c7d65b5b4956ebabe924818b4bedf8862b2d247f4599b9b087d29"
+    },
+    {
+        "id": 3,
+        "name": "Learning Node.js",
+        "by": "Alexander Zanfir",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/5a69650a167ef556b68f0ea7d426f16809888328036cf1e6dfc9986f122ae261"
+    },
+    {
+        "id": 4,
+        "name": "JavaScript Essential Training",
+        "by": "Morten Rand-Hendriksen",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/baa1190c7fdd2039c5dd3808720ac468656f6b43d7abc6ff9b643cb08ec95013"
+    },
+    {
+        "id": 5,
+        "name": "Advanced npm",
+        "by": "Emmanuel Henri",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/70f1b7da7918ebc0ec09bad454dfad1521a39c117de9be59568603281d5c5ae9"
+    },
+    {
+        "id": 6,
+        "name": "Express Essential Training",
+        "by": "Jamie Pittman",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/1d1e55c5b4f39beac364c4d4ed8f1ce11858d226ce003a26462bdba037c1228f"
+    },
+    {
+        "id": 7,
+        "name": "Javascript as a Second Language",
+        "by": "Ray Villalobos",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/15a689a1931ab4c6a0c59f7130abdda1b74f2ae2501d7237efa58bdd092d7e47"
+    },
+    {
+        "id": 8,
+        "name": "Build and Deploy Your First Web App with Modern Tooling",
+        "by": "Oluchukwu Okpala",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/37f46d4a1752ead998700a3d43038d90caffcc1d63e1df3f1ca815784f83b340"
+    },
+    {
+        "id": 9,
+        "name": "Succeeding in Web Development: Full Stack and Front End",
+        "by": "Ray Villalobos",
+        "completed": "August '22",
+        "url": "https://www.linkedin.com/learning/certificates/d0dcfe0827a4eb31d1182b1f14e5faa9707569fa504847b4e7ea96cd6d404554"
+    }
+]

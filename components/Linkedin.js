@@ -21,6 +21,17 @@ const Linkedin = ({ certs }) => {
                                 <br />
                                 By: <i>{certs.author}</i>
                             </div>
+                {certificates.map((data) => {
+                    return (
+                        <div key={data.id} className={styles.card}>
+                            <div className={styles.card__content}>
+                                <a href={data.url}>
+                                    <b>{data.name}</b>
+                                </a>
+                                <br />
+                                By:<i>{data.by}</i>
+                                <br />
+                            </div>
                             <div className={styles.card__type}>
                                 <AiOutlineLinkedin size={30} />
                             </div>
