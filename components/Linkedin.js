@@ -20,10 +20,6 @@ const Linkedin = ({ certs }) => {
                                 </a>
                                 <br />
                                 By: <i>{certs.author}</i>
-                                <br />
-                                {certs.videos} | {certs.time}
-                                <br />
-                                {certs.date_completed}
                             </div>
                             <div className={styles.card__type}>
                                 <AiOutlineLinkedin size={30} />

@@ -8,22 +8,24 @@ import Footer from '../components/Footer';
 import { connectToDatabase } from '../util/mongodb';
 
 export async function getServerSideProps() {
-    const username = 'toremann';
-        const response = await fetch(`https://api.github.com/users/${username}/events/public`);
-        const data = await response.json();
-        const { db } = await connectToDatabase();
-        const db_data = await db.collection('certs').find({}).toArray();
-        return {
-            props: {
-                data,
-                isConnected: true,
-                certs: JSON.parse(JSON.stringify(db_data)),
-            },
-        };
+    // Implement try catch for isConnected
+    // Pass isConnected: false if try results in err
 
+    const username = 'toremann';
+    const response = await fetch(`https://api.github.com/users/${username}/events/public`);
+    const data = await response.json();
+    const { db } = await connectToDatabase();
+    const db_data = await db.collection('certs').find({}).toArray();
+    return {
+        props: {
+            data,
+            isConnected: true,
+            certs: JSON.parse(JSON.stringify(db_data)),
+        },
+    };
 }
 
-export default function Home({ data, certs }) {
+export default function Home({ data, certs, isConnected }) {
     return (
         <div className={styles.container}>
             <Head>
@@ -38,10 +40,16 @@ export default function Home({ data, certs }) {
                         Last commit: {data[0].repo.name.replace(new RegExp(`^toremann/`), '')} {new Date(data[0].created_at).toLocaleString('en-GB')}
                     </code>
                 </motion.p>
-                <div>
-                    <Github data={data} />
-                    <Linkedin certs={certs} />
-                </div>
+                {!isConnected ? (
+                    <div>
+                        <h2> No data found..</h2>
+                    </div>
+                ) : (
+                    <div>
+                        <Github data={data} />
+                        <Linkedin certs={certs} />
+                    </div>
+                )}
                 <Footer />
             </main>
         </div>
