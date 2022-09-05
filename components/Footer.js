@@ -1,10 +1,8 @@
 import React from 'react';
-import styles from '/styles/Home.module.css';
+import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 
 const Footer = () => {
-    // get prop
-    const dbOnline = true;
     return (
         <>
             <footer className={styles.footer}>
@@ -17,7 +15,6 @@ const Footer = () => {
                             </span>
                         </a>
                     </div>
-                    <div>{!dbOnline ? 'db offline' : 'db online'}</div>
                 </div>
             </footer>
         </>
