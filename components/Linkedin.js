@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import styles from '/styles/Home.module.css';
 import { AiOutlineLinkedin } from 'react-icons/ai';
 
-
-const Linkedin = ({data}) => {
+const Linkedin = ({ data }) => {
     return (
         <>
             <motion.p className={styles.description} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
@@ -14,13 +13,13 @@ const Linkedin = ({data}) => {
             <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                 {data.map((data) => {
                     return (
-                        <div key={data._id} className={styles.card}>
+                        <div key={data.id} className={styles.card}>
                             <div className={styles.card__content}>
                                 <a href={data.url}>
                                     <b>{data.course}</b>
                                 </a>
                                 <br />
-                                By:<i>{data.author}</i>
+                                By: <i>{data.author}</i>
                                 <br />
                             </div>
 
