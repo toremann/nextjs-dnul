@@ -5,24 +5,33 @@ import Logo from "./components/Logo";
 import Github from "./components/Github";
 import Linkedin from "../components/Linkedin";
 import Footer from "./components/Footer";
+import { connectToDatabase } from '../util/mongodb';
 
 export async function getServerSideProps() {
     const username = 'toremann';
     const response = await fetch(`https://api.github.com/users/${username}/events/public`);
-    const mongodb = await fetch('http://localhost:3000/api/certs')
-    const data = await response.json();
-    const db = await mongodb.json()
-
-    return {
-        props: {
-            data,
-            db
-        },
-    };
+    
+    try {
+        const data = await response.json()
+        const { db } = await connectToDatabase();
+        const db_data = await db.collection('certs').find({}).toArray();
+        return {
+            props: {
+                data,
+                isConnected: true,
+                mongodb: JSON.parse(JSON.stringify(db_data)),
+            },
+        };
+    } catch (e) {
+        console.error(e);
+        return {
+            props: { isConnected: false },
+        };
+    }
 }
 
-export default function Home({ data, db }) {
-    // console.log(db)
+export default function Home({ data, mongodb }) {
+    console.log(mongodb)
     return (
         <div className={styles.container}>
             <Head>
@@ -39,7 +48,7 @@ export default function Home({ data, db }) {
                 </motion.p>
                 <div>
                     <Github data={data} />
-                    <Linkedin data={db} />
+                    <Linkedin data={mongodb} />
                 </div>
                 <Footer />
             </main>
