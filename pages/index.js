@@ -5,7 +5,7 @@ import Logo from '../components/Logo';
 import Github from '../components/Github';
 import Linkedin from '../components/Linkedin';
 import Footer from '../components/Footer';
-// import { connectToDatabase } from '../util/mongodb';
+import { connectToDatabase } from '../util/mongodb';
 
 async function getGithubEvents() {
   try {
@@ -13,33 +13,28 @@ async function getGithubEvents() {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('git', error);
     return { error };
   }
 }
 
-// async function getMongoDB() {
-//   const { db } = connectToDatabase();
-
-//   try {
-//     await db.collection('certs').find({}).toArray();
-//     return mongoRes.data;
-//   } catch (error) {
-//     console.log('db', error);
-//     return { error };
-//   }
-// }
+async function getMongoDB() {
+  try {
+    const { db } = await connectToDatabase();
+    const data = await db.collection('certs').find({}).toArray();
+    return data;
+  } catch (error) {
+    return { error };
+  }
+}
 
 export async function getServerSideProps() {
   const gitHubEventsData = await getGithubEvents();
-  //   const mongoData = await getMongoDB();
-
-  console.log(gitHubEventsData);
+  const mongoData = await getMongoDB();
 
   return {
     props: {
       githubData: gitHubEventsData.error ? [] : gitHubEventsData,
-      //   mongoData: mongoData.error ? [] : JSON.parse(JSON.stringify(mongoData)),
+      mongoData: mongoData.error ? [] : JSON.parse(JSON.stringify(mongoData)),
     },
   };
 }
@@ -55,11 +50,13 @@ export default function Home({ githubData, mongoData }) {
       <main className={styles.main}>
         <Logo data={githubData} />
         <motion.p className={styles.description} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-          <code className={styles.code}>{/* Last commit: {githubData[0].repo.name.replace(new RegExp(`^toremann/`), '')} {new Date(data[0].created_at).toLocaleString('en-GB')} */}</code>
+          <code className={styles.code}>
+            Last commit: {githubData[0].repo.name.replace(new RegExp(`^toremann/`), '')} {new Date(githubData[0].created_at).toLocaleString('en-GB')}
+          </code>
         </motion.p>
         <div>
           <Github data={githubData} />
-          {/* <Linkedin certs={mongoData} /> */}
+          <Linkedin certs={mongoData} />
         </div>
         <Footer />
       </main>

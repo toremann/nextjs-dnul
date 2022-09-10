@@ -8,14 +8,13 @@ const Github = ({ data }) => {
 
   return (
     <>
+      <motion.p className={styles.description} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+        Recent commits:
+      </motion.p>
       {data.length === 0 ? (
-        <span> no data soz</span>
+        <span>Error loading data...</span>
       ) : (
         <>
-          <motion.p className={styles.description} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            {' '}
-            Recent commits:{' '}
-          </motion.p>
           <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
             {data
               .filter((data) => {
