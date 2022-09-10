@@ -5,38 +5,41 @@ import Logo from '../components/Logo';
 import Github from '../components/Github';
 import Linkedin from '../components/Linkedin';
 import Footer from '../components/Footer';
-import { connectToDatabase } from '../util/mongodb';
+// import { connectToDatabase } from '../util/mongodb';
 
 async function getGithubEvents() {
   try {
-    const gitRes = await fetch('https://api.github.com/users/toremann/events');
-    return gitRes.data;
+    const response = await fetch('https://api.github.com/users/toremann/events/public');
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log('git', error);
     return { error };
   }
 }
 
-async function getMongoDB() {
-  const { db } = connectToDatabase();
+// async function getMongoDB() {
+//   const { db } = connectToDatabase();
 
-  try {
-    await db.collection('certs').find({}).toArray();
-    return mongoRes.data;
-  } catch (error) {
-    console.log('db', error);
-    return { error };
-  }
-}
+//   try {
+//     await db.collection('certs').find({}).toArray();
+//     return mongoRes.data;
+//   } catch (error) {
+//     console.log('db', error);
+//     return { error };
+//   }
+// }
 
 export async function getServerSideProps() {
   const gitHubEventsData = await getGithubEvents();
-  const mongoData = await getMongoDB();
+  //   const mongoData = await getMongoDB();
+
+  console.log(gitHubEventsData);
 
   return {
     props: {
       githubData: gitHubEventsData.error ? [] : gitHubEventsData,
-      mongoData: mongoData.error ? [] : JSON.parse(JSON.stringify(mongoData)),
+      //   mongoData: mongoData.error ? [] : JSON.parse(JSON.stringify(mongoData)),
     },
   };
 }
@@ -56,7 +59,7 @@ export default function Home({ githubData, mongoData }) {
         </motion.p>
         <div>
           <Github data={githubData} />
-          <Linkedin certs={mongoData} />
+          {/* <Linkedin certs={mongoData} /> */}
         </div>
         <Footer />
       </main>
