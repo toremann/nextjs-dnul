@@ -5,27 +5,7 @@ import Logo from '../components/Logo';
 import Github from '../components/Github';
 import Linkedin from '../components/Linkedin';
 import Footer from '../components/Footer';
-import { connectToDatabase } from '../util/mongodb';
-
-async function getGithubEvents() {
-  try {
-    const response = await fetch('https://api.github.com/users/toremann/events/public');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    return { error };
-  }
-}
-
-async function getMongoDB() {
-  try {
-    const { db } = await connectToDatabase();
-    const data = await db.collection('certs').find({}).toArray();
-    return data;
-  } catch (error) {
-    return { error };
-  }
-}
+import { getMongoDB, getGithubEvents } from '../util/getStuff';
 
 export async function getServerSideProps() {
   const gitHubEventsData = await getGithubEvents();
