@@ -68,6 +68,7 @@ const Github = ({ data }) => {
                 </button>
               </div>
               <div>
+                {/* Fix placement, fix styling, fix buttons */}
                 Showing latest: {data.length} commits | {page}
               </div>
               <div>
