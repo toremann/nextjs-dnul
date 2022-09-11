@@ -2,17 +2,33 @@ import React from 'react';
 import styles from '../styles/Home.module.css';
 import { motion } from 'framer-motion';
 import { AiFillGithub } from 'react-icons/ai';
+import { useState } from 'react';
 
 const Github = ({ data }) => {
   const gitURL = 'https://github.com/';
+  const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
 
+  function handlePrevious() {
+    setPage((p) => {
+      if (p === 1) return p;
+      return p - 1;
+    });
+  }
+
+  function handleNext() {
+    setPage((p) => {
+      if (p === pageCount) return p;
+      return p + 1;
+    });
+  }
   return (
     <>
       <motion.p className={styles.description} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         Recent commits:
       </motion.p>
       {data.length === 0 ? (
-        <span>Error loading data...</span>
+        <span className={styles.error}>Error loading data...</span>
       ) : (
         <>
           <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
@@ -20,7 +36,7 @@ const Github = ({ data }) => {
               .filter((data) => {
                 return data.type === 'PushEvent';
               })
-              .slice(0, 8)
+              .slice(0, 6)
               .map((data, index) => {
                 return (
                   <div key={index} className={styles.card}>
@@ -45,6 +61,21 @@ const Github = ({ data }) => {
                   </div>
                 );
               })}
+            <div className={styles.pagination}>
+              <div>
+                <button className={styles.button__left} disabled={page === 1} onClick={handlePrevious}>
+                  Prev
+                </button>
+              </div>
+              <div>
+                Showing latest: {data.length} commits | {page}
+              </div>
+              <div>
+                <button className={styles.button__right} disabled={page === pageCount} onClick={handleNext}>
+                  Next
+                </button>
+              </div>
+            </div>
           </motion.div>
         </>
       )}

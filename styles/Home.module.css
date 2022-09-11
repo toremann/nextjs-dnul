@@ -131,6 +131,13 @@
   width: 350px;
 }
 
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
 .card a:hover{
   color: aquamarine;
 }
@@ -150,6 +157,21 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  
+}
+
+.button__left {
+
+}
+
+.button__right {
+
 }
 
 @media (max-width: 600px) {
