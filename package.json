@@ -19,7 +19,7 @@
     "react-intersection-observer": "^9.3.5"
   },
   "devDependencies": {
-    "eslint": "8.19.0",
+    "eslint": "8.23.1",
     "eslint-config-next": "12.2.5",
     "next": "12.2.5",
     "prettier": "^2.7.1"
