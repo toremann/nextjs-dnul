@@ -162,17 +162,44 @@
 .pagination {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   
 }
 
 .button__left {
-
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
 
 .button__right {
-
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
+
+.button__left:hover,
+.button__left:focus,
+.button__left:active {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.button__right:hover,
+.button__right:focus,
+.button__right:active {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+
+.card_container {
+  display: flex;
+  align-items: center;
+}
+
+.card__content text {
+  font-size: smaller;
+}
+
 
 @media (max-width: 600px) {
   .grid {

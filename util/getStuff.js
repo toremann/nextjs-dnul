@@ -3,7 +3,7 @@ import { connectToDatabase } from './mongodb';
 export async function getMongoDB() {
   try {
     const { db } = await connectToDatabase();
-    const data = await db.collection('certs').find({}).toArray();
+    const data = await db.collection('certs').find({}).limit(6).toArray();
     return data;
   } catch (error) {
     return { error };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css';
-import { AiOutlineLinkedin } from 'react-icons/ai';
+import { AiOutlineLinkedin, AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import { useState } from 'react';
 
 const Linkedin = ({ certs }) => {
@@ -31,17 +31,20 @@ const Linkedin = ({ certs }) => {
         <span className={styles.error}>Error loading data...</span>
       ) : (
         <>
-          <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            {certs
-              .slice(0, 6)
-              .reverse()
-              .map((certs) => {
+          <div className={styles.card_container}>
+            <div className={styles.button__left} disabled={page === 1} onClick={handlePrevious}>
+              <AiFillCaretLeft size={30} />
+            </div>
+            <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+              {certs.reverse().map((certs) => {
                 return (
                   <div key={certs._id} className={styles.card}>
                     <div className={styles.card__content}>
                       <a href={certs.url}>
                         <b>{certs.course}</b>
                       </a>
+                      <br />
+                      <text>{certs.videos} - {certs.time}</text>
                       <br />
                       By: <i>{certs.author}</i>
                     </div>
@@ -51,23 +54,14 @@ const Linkedin = ({ certs }) => {
                   </div>
                 );
               })}
-            <div className={styles.pagination}>
-              <div>
-                <button className={styles.button__left} disabled={page === 1} onClick={handlePrevious}>
-                  Prev
-                </button>
+              <div className={styles.pagination}>
+                Showing latest: {certs.length} commits | {page}
               </div>
-              <div>
-                {/* Fix placement, fix styling, fix buttons */}
-                Certs: {certs.length} | Page: {page}
-              </div>
-              <div>
-                <button className={styles.button__right} disabled={page === pageCount} onClick={handleNext}>
-                  Next
-                </button>
-              </div>
+            </motion.div>
+            <div className={styles.button__right} disabled={page === pageCount} onClick={handleNext}>
+              <AiFillCaretRight size={30} />
             </div>
-          </motion.div>
+          </div>
         </>
       )}
     </>
