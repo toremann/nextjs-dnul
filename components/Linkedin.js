@@ -5,22 +5,22 @@ import { AiOutlineLinkedin, AiFillCaretLeft, AiFillCaretRight } from 'react-icon
 import { useState } from 'react';
 
 const Linkedin = ({ certs }) => {
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
+  const [post, setPost] = useState(certs);
+  const [number, setNumber] = useState(1); // No of pages
+  const [postPerPage] = useState(6);
 
-  function handlePrevious() {
-    setPage((p) => {
-      if (p === 1) return p;
-      return p - 1;
-    });
+  const lastPost = number * postPerPage;
+  const firstPost = lastPost - postPerPage;
+  const currentPost = post.slice(firstPost, lastPost);
+  const pageNumber = [];
+
+  for (let i = 1; i <= Math.ceil(post.length / postPerPage); i++) {
+    pageNumber.push(i);
   }
 
-  function handleNext() {
-    setPage((p) => {
-      if (p === pageCount) return p;
-      return p + 1;
-    });
-  }
+  console.log('number', number)
+  console.log('last page?', number == pageNumber.length)
+  console.log('first page?', number == 1)
 
   return (
     <>
@@ -32,11 +32,14 @@ const Linkedin = ({ certs }) => {
       ) : (
         <>
           <div className={styles.card_container}>
-            <div className={styles.button__left} disabled={page === 1} onClick={handlePrevious}>
-              <AiFillCaretLeft size={30} />
+            <div className={styles.button__left} >
+
+              {/* FIX THIS STYLING */}
+
+              <button disabled={number == 1} onClick={() => setNumber(number - 1)}><AiFillCaretLeft size={30} /></button>
             </div>
             <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-              {certs.reverse().map((certs) => {
+              {currentPost.map((certs) => {
                 return (
                   <div key={certs._id} className={styles.card}>
                     <div className={styles.card__content}>
@@ -55,11 +58,14 @@ const Linkedin = ({ certs }) => {
                 );
               })}
               <div className={styles.pagination}>
-                Showing latest: {certs.length} commits | {page}
+                Page: {number} / {pageNumber.length}
               </div>
             </motion.div>
-            <div className={styles.button__right} disabled={page === pageCount} onClick={handleNext}>
-              <AiFillCaretRight size={30} />
+            <div className={styles.button__right} >
+
+              {/* FIX THIS STYLING */}
+
+              <button disabled={number == pageNumber.length} onClick={() => setNumber(number + 1)}><AiFillCaretRight size={30} /></button>
             </div>
           </div>
         </>

@@ -6,22 +6,23 @@ import { useState } from 'react';
 
 const Github = ({ data }) => {
   const gitURL = 'https://github.com/';
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
+  const [post, setPost] = useState(data);
+  const [number, setNumber] = useState(1); // No of pages
+  const [postPerPage] = useState(6);
 
-  function handlePrevious() {
-    setPage((p) => {
-      if (p === 1) return p;
-      return p - 1;
-    });
+  const lastPost = number * postPerPage;
+  const firstPost = lastPost - postPerPage;
+  const currentPost = post.slice(firstPost, lastPost);
+
+  const pageNumber = [];
+
+  for (let i = 1; i <= Math.ceil(post.length / postPerPage); i++) {
+    pageNumber.push(i);
   }
 
-  function handleNext() {
-    setPage((p) => {
-      if (p === pageCount) return p;
-      return p + 1;
-    });
-  }
+  console.log('number', number)
+  console.log('last page?', number == pageNumber.length)
+  console.log('first page?', number == 1)
 
   return (
     <>
@@ -33,15 +34,11 @@ const Github = ({ data }) => {
       ) : (
         <>
           <div className={styles.card_container}>
-            <div className={styles.button__left} disabled={page === 1} onClick={handlePrevious}>
-              <AiFillCaretLeft size={30} />
+            <div className={styles.button__left}>
+            <button disabled={number == 1} onClick={() => setNumber(number - 1)}><AiFillCaretLeft size={30} /></button>
             </div>
             <motion.div className={styles.grid} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-              {data
-                .filter((data) => {
-                  return data.type === 'PushEvent';
-                })
-                .slice(0, 6)
+              {currentPost
                 .map((data, index) => {
                   return (
                     <div key={index} className={styles.card}>
@@ -67,11 +64,11 @@ const Github = ({ data }) => {
                   );
                 })}
               <div className={styles.pagination}>
-                Showing latest: {data.length} commits | {page}
+              Page: {number} / {pageNumber.length}
               </div>
             </motion.div>
-            <div className={styles.button__right} disabled={page === pageCount} onClick={handleNext}>
-              <AiFillCaretRight size={30} />
+            <div className={styles.button__right}>
+            <button disabled={number == pageNumber.length} onClick={() => setNumber(number + 1)}><AiFillCaretRight size={30} /></button>
             </div>
           </div>
         </>
