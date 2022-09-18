@@ -95,12 +95,6 @@
   text-align: center;
 }
 
-.description {
-  margin: 0rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
 .code {
   border-radius: 5px;
   padding: 0.75rem;
@@ -159,37 +153,43 @@
   line-height: 1.5;
 }
 
-.pagination {
+.recent__header {
   display: flex;
-  width: 100%;
-  justify-content: center;
-  
+  justify-content: space-between;
+  max-width: 800px;
+  margin: auto;
+  align-items: flex-end;
 }
 
-.button__left {
+.recent__header h1 {
+  font-size: large;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.button__container {
   height: 200px;
   display: flex;
   align-items: center;
 }
 
-.button__right {
-  height: 200px;
-  display: flex;
-  align-items: center;
+.button__container button {
+  border-radius: 10px;
+  height: 150px;
+  background: none;
+  border: none;
+  border: 1px solid #eaeaea00;
 }
 
-.button__left:hover,
-.button__left:focus,
-.button__left:active {
-  background-color: rgba(255, 255, 255, 0.22);
+.button__container button:hover,
+.button__container button:focus,
+.button__container button:active {
+  color: #eaeaea;
 }
 
-.button__right:hover,
-.button__right:focus,
-.button__right:active {
-  background-color: rgba(255, 255, 255, 0.22);
+.button__container button:disabled {
+  color: #eaeaea44;
 }
-
 
 .card_container {
   display: flex;

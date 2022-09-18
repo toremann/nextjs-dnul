@@ -37,6 +37,7 @@ export default function Home({ githubData, mongoData }) {
           </motion.p>
           <div>
             <Github data={githubData} />
+            <br />
             <Linkedin certs={mongoData} />
           </div>
           <Footer />
