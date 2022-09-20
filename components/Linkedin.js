@@ -47,11 +47,17 @@ const Linkedin = ({ certs }) => {
                         <b>{certs.course}</b>
                       </a>
                       <br />
+                      By: <i>{certs.author}</i>
+                      <br />
                       <text>
                         {certs.videos} - {certs.time}
                       </text>
                       <br />
-                      By: <i>{certs.author}</i>
+                      {certs.category.map((category) => (
+                        <li>
+                          <text>{category}</text>
+                        </li>
+                      ))}
                     </div>
                     <div className={styles.card__type}>
                       <AiOutlineLinkedin size={30} />
