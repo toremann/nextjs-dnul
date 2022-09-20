@@ -53,8 +53,8 @@ const Linkedin = ({ certs }) => {
                         {certs.videos} - {certs.time}
                       </text>
                       <br />
-                      {certs.category.map((category) => (
-                        <li>
+                      {certs.category.map((category, index) => (
+                        <li key={index}>
                           <text>{category}</text>
                         </li>
                       ))}
