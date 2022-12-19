@@ -12,7 +12,7 @@
   "dependencies": {
     "framer-motion": "^7.6.19",
     "mongodb": "^4.12.1",
-    "next": "13.0.5",
+    "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
-    "next": "13.0.5",
+    "next": "13.0.7",
     "prettier": "^2.8.1"
   }
 }
